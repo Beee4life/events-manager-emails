@@ -27,9 +27,16 @@ When activated the plugin sets a :
 * default styling
 * default message
 
-The email subject is not set, because all 4 fields need to be set, to send an email. 
+## Available variables
 
-You can customise these settings through the admin panel. More info can be found in the contextual help (top right).
+* %site_name% : replaced by the "Site Title", which is defined in Settings > General
+* %email_styling% : replaced by the CSS, which is defined on the styling page.
+* %home_url% : replaced by the url, which is defined in get_option('home_url')
+* %logo% : replaced by the URL stored in "Header logo"
+* %display_name% : replaced by the display name of the user
+* %first_name% : replaced by the user's first name
+* %last_name% : replaced by the user's last name
+* %email_message% : replaced by the message you want to send
 
 ### Suggestions
 
