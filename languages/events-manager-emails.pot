@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Events Manager Emails\n"
-"POT-Creation-Date: 2018-02-23 03:07+0100\n"
+"POT-Creation-Date: 2018-02-23 20:11+0100\n"
 "PO-Revision-Date: 2018-02-23 02:11+0100\n"
 "Last-Translator: Beee\n"
 "Language-Team: \n"
@@ -17,27 +17,28 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: languages\n"
 
-#: EM_Emails_Addon.php:155
-msgid "No event selected."
-msgstr ""
-
-#: EM_Emails_Addon.php:160
-msgid "No email type selected."
-msgstr ""
-
-#: EM_Emails_Addon.php:220 EM_Emails_Addon.php:241 EM_Emails_Addon.php:265
+#: EM_Emails_Addon.php:154 EM_Emails_Addon.php:198 EM_Emails_Addon.php:237
+#: EM_Emails_Addon.php:275
 msgid "Something went wrong. Please try again."
 msgstr ""
 
-#: EM_Emails_Addon.php:227 EM_Emails_Addon.php:250
+#: EM_Emails_Addon.php:160
+msgid "No event selected."
+msgstr ""
+
+#: EM_Emails_Addon.php:165
+msgid "No email type selected."
+msgstr ""
+
+#: EM_Emails_Addon.php:221 EM_Emails_Addon.php:260
 msgid "Settings saved successfully."
 msgstr ""
 
-#: EM_Emails_Addon.php:286
+#: EM_Emails_Addon.php:294
 msgid "Settings successfully reset to default."
 msgstr ""
 
-#: EM_Emails_Addon.php:294 EM_Emails_Addon.php:300
+#: EM_Emails_Addon.php:302 EM_Emails_Addon.php:308
 msgid "Setting saved successfully."
 msgstr ""
 
@@ -77,15 +78,19 @@ msgstr ""
 msgid "General email"
 msgstr ""
 
-#: emails-page.php:29
+#: emails-page.php:30
 msgid "Enter an email subject here (if not entered, email will not be sent)"
 msgstr ""
 
-#: emails-page.php:33
+#: emails-page.php:35
 msgid "Enter the email content here (if not entered, email will not be sent)"
 msgstr ""
 
-#: emails-page.php:35
+#: emails-page.php:39
+msgid "Enter your user ID. Email will be sent to your registered address."
+msgstr ""
+
+#: emails-page.php:41
 msgid "Save email settings"
 msgstr ""
 
@@ -181,6 +186,30 @@ msgstr ""
 #: misc-page.php:46
 #, php-format
 msgid "I'm a Wordpress developer, specializing in rebuilds and custom plugin development. If you're interested to hire me, contact me through my <a href=\"%s\">website</a>."
+msgstr ""
+
+#: send-email.php:16
+msgid "No email subject has been entered. You need to enter one before you can send it."
+msgstr ""
+
+#: send-email.php:22
+msgid "No email styling has been entered. You need to enter one before you can send it."
+msgstr ""
+
+#: send-email.php:28
+msgid "No email message has been entered. You need to enter one before you can send it."
+msgstr ""
+
+#: send-email.php:34
+msgid "No email template has been entered. You need to enter one before you can send it."
+msgstr ""
+
+#: send-email.php:56
+msgid "Email successfully sent."
+msgstr ""
+
+#: send-email.php:58
+msgid "Email NOT sent."
 msgstr ""
 
 #: template-page.php:46

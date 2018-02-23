@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Events Manager Emails\n"
-"POT-Creation-Date: 2018-02-23 03:07+0100\n"
-"PO-Revision-Date: 2018-02-23 03:07+0100\n"
+"POT-Creation-Date: 2018-02-23 20:07+0100\n"
+"PO-Revision-Date: 2018-02-23 20:11+0100\n"
 "Last-Translator: Beee\n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -16,29 +16,30 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: languages\n"
 
-#: EM_Emails_Addon.php:155
-msgid "No event selected."
-msgstr ""
+#: EM_Emails_Addon.php:154 EM_Emails_Addon.php:198 EM_Emails_Addon.php:237
+#: EM_Emails_Addon.php:275
+msgid "Something went wrong. Please try again."
+msgstr "Er is iets verkeerd gegaan. Probeer het opnieuw."
 
 #: EM_Emails_Addon.php:160
+msgid "No event selected."
+msgstr "Geen evenement geselecteerd."
+
+#: EM_Emails_Addon.php:165
 msgid "No email type selected."
-msgstr ""
+msgstr "Geen email type geselecteerd."
 
-#: EM_Emails_Addon.php:220 EM_Emails_Addon.php:241 EM_Emails_Addon.php:265
-msgid "Something went wrong. Please try again."
-msgstr ""
-
-#: EM_Emails_Addon.php:227 EM_Emails_Addon.php:250
+#: EM_Emails_Addon.php:221 EM_Emails_Addon.php:260
 msgid "Settings saved successfully."
-msgstr ""
+msgstr "Instellingen succesvol opgeslagen."
 
-#: EM_Emails_Addon.php:286
+#: EM_Emails_Addon.php:294
 msgid "Settings successfully reset to default."
-msgstr ""
+msgstr "Alles is succesvol terug gezet naar de default instellingen."
 
-#: EM_Emails_Addon.php:294 EM_Emails_Addon.php:300
+#: EM_Emails_Addon.php:302 EM_Emails_Addon.php:308
 msgid "Setting saved successfully."
-msgstr ""
+msgstr "Instelling succesvol opgeslagen."
 
 #: dashboard-page.php:8 emails-page.php:8 misc-page.php:8 template-page.php:8
 msgid "Sorry, you do not have sufficient permissions to access this page."
@@ -46,60 +47,66 @@ msgstr ""
 
 #: dashboard-page.php:31 template-page.php:40
 msgid "For more info see the \"Help\" menu (top right)."
-msgstr ""
+msgstr "Voor meer info, zie het \"Help\" menu (rechtsboven)."
 
 #: dashboard-page.php:37
 msgid "Events are sorted descending by (post) ID."
-msgstr ""
+msgstr "Evenementen zijn (omgekeerd) gesorteerd op (post) ID."
 
 #: dashboard-page.php:38 dashboard-page.php:40
 msgid "Select an event"
-msgstr ""
+msgstr "Selecteer een evenement"
 
 #: dashboard-page.php:49
 msgid "Email types"
-msgstr ""
+msgstr "Email types"
 
 #: dashboard-page.php:50 dashboard-page.php:52
 msgid "Select which email to send"
-msgstr ""
+msgstr "Selecteer welke email verzonden moet worden"
 
 #: dashboard-page.php:58
 msgid "Send email"
-msgstr ""
+msgstr "Verstuur email"
 
 #: emails-page.php:20
 msgid ""
 "To see which variables are available, see the \"Help\" menu (top right)."
 msgstr ""
+"Om te zien welke variabelen beschikbaar zijn, zie het \"Help\" menu "
+"(rechtsboven)."
 
 #: emails-page.php:25
 msgid "General email"
-msgstr ""
+msgstr "Algemene email"
 
-#: emails-page.php:29
+#: emails-page.php:30
 msgid "Enter an email subject here (if not entered, email will not be sent)"
 msgstr ""
 
-#: emails-page.php:33
+#: emails-page.php:35
 msgid "Enter the email content here (if not entered, email will not be sent)"
 msgstr ""
 
-#: emails-page.php:35
-msgid "Save email settings"
+#: emails-page.php:39
+msgid "Enter your user ID. Email will be sent to your registered address."
 msgstr ""
+
+#: emails-page.php:41
+msgid "Save email settings"
+msgstr "Bewaar email instellingen"
 
 #: errors.php:27
 msgid "Warning"
-msgstr ""
+msgstr "Waarschuwing"
 
 #: errors.php:34
 msgid "Error"
-msgstr ""
+msgstr "Fout"
 
 #: errors.php:46
 msgid "Dismiss this notice"
-msgstr ""
+msgstr "Verberg melding"
 
 #: help-tabs.php:32
 msgid ""
@@ -147,15 +154,15 @@ msgstr ""
 
 #: misc-page.php:24 misc-page.php:27
 msgid "Reset to default settings"
-msgstr ""
+msgstr "Reset naar default instellingen"
 
 #: misc-page.php:26
 msgid "Reset all"
-msgstr ""
+msgstr "Reset alles"
 
 #: misc-page.php:30 misc-page.php:36
 msgid "Preserve values on uninstall"
-msgstr ""
+msgstr "Bewaar waarden bij uninstall"
 
 #: misc-page.php:31
 msgid ""
@@ -165,15 +172,15 @@ msgstr ""
 
 #: misc-page.php:35
 msgid "Preserve values"
-msgstr ""
+msgstr "Bewaar waarden"
 
 #: misc-page.php:39 template-page.php:54
 msgid "Save settings"
-msgstr ""
+msgstr "Bewaar instellingen"
 
 #: misc-page.php:42
 msgid "Support"
-msgstr ""
+msgstr "Ondersteuning"
 
 #: misc-page.php:43
 #, php-format
@@ -182,7 +189,7 @@ msgstr ""
 
 #: misc-page.php:45
 msgid "About the author"
-msgstr ""
+msgstr "Over de auteur"
 
 #: misc-page.php:46
 #, php-format
@@ -191,6 +198,38 @@ msgid ""
 "development. If you're interested to hire me, contact me through my <a href="
 "\"%s\">website</a>."
 msgstr ""
+
+#: send-email.php:16
+msgid ""
+"No email subject has been entered. You need to enter one before you can send "
+"it."
+msgstr ""
+
+#: send-email.php:22
+msgid ""
+"No email styling has been entered. You need to enter one before you can send "
+"it."
+msgstr ""
+
+#: send-email.php:28
+msgid ""
+"No email message has been entered. You need to enter one before you can send "
+"it."
+msgstr ""
+
+#: send-email.php:34
+msgid ""
+"No email template has been entered. You need to enter one before you can "
+"send it."
+msgstr ""
+
+#: send-email.php:56
+msgid "Email successfully sent."
+msgstr "Email succesvol verzonden."
+
+#: send-email.php:58
+msgid "Email NOT sent."
+msgstr "Email NIET verstuurd."
 
 #: template-page.php:46
 msgid "Paste full url of logo"
