@@ -29,16 +29,16 @@
         }
     
         if ( in_array( $screen_id, ['event_page_em-emails','settings_page_em-emails-emails','settings_page_em-emails-template','settings_page_em-emails-misc'] ) ) {
-            $tab_variables = '<p>All variables can be used in the email subject, email content and template, but be careful which you use in the subject.</p>';
+            $tab_variables = '<p>' . __( 'All variables can be used in the email subject, email content and template, but be careful which you use in the subject.', 'em-emails' ) . '</p>';
             $tab_variables .= '<ul>';
-            $tab_variables .= '<li>%site_name% : replaced by the "Site Title", which is defined in Settings > General</li>';
-            $tab_variables .= '<li>%email_styling% : replaced by the CSS, which is defined on the styling page.</li>';
-            $tab_variables .= '<li>%home_url% : replaced by the url, which is defined in get_option(\'home_url\')</li>';
-            $tab_variables .= '<li>%logo% : replaced by the URL stored in "Header logo"</li>';
-            $tab_variables .= '<li>%display_name% : replaced by the display name of the user</li>';
-            $tab_variables .= '<li>%first_name% : replaced by the user\'s first name</li>';
-            $tab_variables .= '<li>%last_name% : replaced by the user\'s last name</li>';
-            $tab_variables .= '<li>%email_message% : replaced by the message you want to send</li>';
+            $tab_variables .= '<li>%site_name% : ' . __( 'replaced by the "Site Title", which is defined in Settings > General', 'em-emails' ) . '</li>';
+            $tab_variables .= '<li>%email_styling% : ' . __( 'replaced by the CSS, which is defined on the styling page.', 'em-emails' ) . '</li>';
+            $tab_variables .= '<li>%home_url% : ' . __( 'replaced by the url, which is defined in get_option(\'home_url\')', 'em-emails' ) . '</li>';
+            $tab_variables .= '<li>%logo% : ' . __( 'replaced by the URL stored in "Header logo"', 'em-emails' ) . '</li>';
+            $tab_variables .= '<li>%display_name% : ' . __( 'replaced by the display name of the user', 'em-emails' ) . '</li>';
+            $tab_variables .= '<li>%first_name% : ' . __( 'replaced by the user\'s first name', 'em-emails' ) . '</li>';
+            $tab_variables .= '<li>%last_name% : ' . __( 'replaced by the user\'s last name', 'em-emails' ) . '</li>';
+            $tab_variables .= '<li>%email_message% : ' . __( 'replaced by the message you want to send', 'em-emails' ) . '</li>';
             $tab_variables .= '</ul>';
     
             $screen->add_help_tab( array(
@@ -80,10 +80,8 @@
                         <input type="hidden" name="lc" value="US">
                         <input type="hidden" name="bn" value="PP-DonationsBF">
                         <div class="donation-amount">&euro;
-                            <label for="donate-amount" class="screen-reader-text">
-                                Donate amount
-                            </label>
-                            <input type="number" id="donate-amount" min="1" name="amount" value="10">
+                            <label for="donate-amount" class="screen-reader-text"></label>
+                            <input type="number" id="donate-amount" min="1" name="amount" value="5">
                             <input type="submit" class="button-primary" value="Donate 💰">
                         </div>
                     </div>
