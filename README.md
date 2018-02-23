@@ -1,4 +1,4 @@
-# Events Manager Emails
+# Events Manager Emails Addon
 
 Welcome to the Email Addon for [Events Manager](http://wp-events-plugin.com/). 
 
@@ -19,13 +19,14 @@ Uploading the extracted zip by FTP
 1. Go to your WordPress Admin plugins page.
 1. Activate the plugin by clicking `Activate` after installation.
 
-
 ## Usage
 
-When activated the plugin installs a 
+When activated the plugin installs a :
 
 * default template
 * default styling
 * default message
+
+The email subject is not set, because all 4 fields need to be set, to send an email. 
 
 You can customise these settings through the admin panel. More info can be found in the contextual help (top right).
