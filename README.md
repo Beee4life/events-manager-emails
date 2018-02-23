@@ -41,6 +41,19 @@ When activated the plugin sets a :
 * %last_name% : replaced by the user's last name
 * %email_message% : replaced by the message you want to send
 
+## Available actions
+
+There are a couple of actions available, meant to ouput an optional extra text/description for your users.
+
+* eme_after_event_label
+* eme_after_email_type_label
+* eme_after_email_subject_label
+* eme_after_email_content_label
+* eme_after_test_label
+* eme_after_logo_label
+* eme_after_styling_label
+* eme_after_template_label
+
 ### Suggestions
 
 If you have any suggestions, post them on [GitHub](https://github.com/Beee4life/events-manager-emails/issues).

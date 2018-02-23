@@ -36,6 +36,7 @@
             <p>
                 <b><?php _e( 'Events are sorted descending by (post) ID.', 'em-emails' ); ?></b><br />
                 <label for="event_name" class="screen-reader-text"><?php _e( 'Select an event', 'em-emails' ); ?></label>
+                <?php do_action( 'eme_after_event_label' ); ?>
                 <select id="event_name" name="event_id">
                     <option value=""><?php _e( 'Select an event', 'em-emails' ); ?></option>
                     <?php foreach ( $rsvp_events as $event ) { ?>
@@ -48,6 +49,7 @@
             <p>
                 <b><?php _e( 'Email types', 'em-emails' ); ?></b><br />
                 <label for="email_type" class="screen-reader-text"><?php _e( 'Select which email to send', 'em-emails' ); ?></label>
+                <?php do_action( 'eme_after_email_type_label' ); ?>
                 <select id="email_type" name="email_type">
                     <option value=""><?php _e( 'Select which email to send', 'em-emails' ); ?></option>
                     <?php foreach ( $email_types as $key => $value ) { ?>
