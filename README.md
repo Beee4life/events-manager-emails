@@ -30,3 +30,7 @@ When activated the plugin installs a :
 The email subject is not set, because all 4 fields need to be set, to send an email. 
 
 You can customise these settings through the admin panel. More info can be found in the contextual help (top right).
+
+### Suggestions
+
+If you have any suggestions, post them on [GitHub](https://github.com/Beee4life/events-manager-emails/issues).
