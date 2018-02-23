@@ -1,7 +1,7 @@
 <?php
     /*
     Plugin Name: Events Manager Emails
-    Version: 0.1
+    Version: 0.1 beta
     Plugin URI:
     Description: This plugin creates an extendable email 'part' to Events Manager.
     Author: Beee
@@ -90,11 +90,14 @@
             public function eme_set_default_values() {
                 include( 'defaults.php' );
             }
-
-            public static function eme_admin_menu() {
     
+            /**
+             * Return Admin menu
+             *
+             * @return string
+             */
+            public static function eme_admin_menu() {
                 return '<p><a href="' . site_url() . '/wp-admin/edit.php?post_type=event&page=em-emails">Dashboard</a> | <a href="'.site_url().'/wp-admin/options-general.php?page=em-emails-emails">Emails</a> | <a href="'.site_url().'/wp-admin/options-general.php?page=em-emails-template">Template</a> | <a href="'.site_url().'/wp-admin/options-general.php?page=em-emails-misc">Misc</a></p>';
-        
             }
 
             /**
@@ -135,6 +138,9 @@
                 );
             }
     
+            /**
+             * Function to send the email
+             */
             public function eme_send_email_functions() {
         
                 if ( isset( $_POST[ 'send_em_emails_nonce' ] ) ) {
@@ -205,6 +211,9 @@
                 }
             }
     
+            /**
+             * Store email settings
+             */
             public function eme_store_emails() {
                 if ( isset( $_POST[ 'em_emails_emails_nonce' ] ) ) {
                     if ( ! wp_verify_nonce( $_POST[ 'em_emails_emails_nonce' ], 'em-emails-emails-nonce' ) ) {
@@ -221,7 +230,10 @@
                     }
                 }
             }
-            
+    
+            /**
+             * Store template settings
+             */
             public function eme_store_templates() {
                 
                 if ( isset( $_POST[ 'em_emails_styling_nonce' ] ) ) {
@@ -242,7 +254,10 @@
                     }
                 }
             }
-            
+    
+            /**
+             * Store misc settings
+             */
             public function eme_store_settings() {
                 
                 if ( isset( $_POST[ 'em_emails_settings_nonce' ] ) ) {
