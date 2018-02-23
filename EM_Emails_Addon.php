@@ -46,7 +46,7 @@
                 add_action( 'plugins_loaded',   array( $this, 'eme_load_plugin_textdomain' ) );
                 add_action( 'admin_menu',       array( $this, 'eme_admin_pages' ) );
                 add_action( 'admin_init',       array( $this, 'eme_admin_menu' ) );
-                add_action( 'admin_init',       array( $this, 'eme_send_email_functions' ) );
+                add_action( 'admin_init',       array( $this, 'eme_send_email_function' ) );
                 add_action( 'admin_init',       array( $this, 'eme_store_emails' ) );
                 add_action( 'admin_init',       array( $this, 'eme_store_templates' ) );
                 add_action( 'admin_init',       array( $this, 'eme_store_settings' ) );
@@ -141,19 +141,24 @@
             /**
              * Function to send the email
              */
-            public function eme_send_email_functions() {
-        
-                if ( isset( $_POST[ 'send_em_emails_nonce' ] ) ) {
+            public function eme_send_email_function( $post_data = false ) {
+    
+                if ( false != $post_data ) {
+    
+                    $email_these_users = array( $post_data[ 'eme_emails_test_user' ] );
+                    include( 'send-email.php' );
+                
+                } elseif ( isset( $_POST[ 'send_em_emails_nonce' ] ) ) {
+                    
                     if ( ! wp_verify_nonce( $_POST[ 'send_em_emails_nonce' ], 'send-em-emails-nonce' ) ) {
-                        // @TODO: add errors
+                        eme_errors()->add( 'error_no_nonce_match', esc_html( __( 'Something went wrong. Please try again.', 'em-emails' ) ) );
+
                         return;
                     } else {
-                
-                        // echo '<pre>'; var_dump( $_POST ); echo '</pre>'; exit;
-                
+                        
                         if ( empty( $_POST[ 'event_id' ] ) ) {
                             eme_errors()->add( 'error_no_event', esc_html( __( 'No event selected.', 'em-emails' ) ) );
-                            
+    
                             return;
                         }
                         if ( empty( $_POST[ 'email_type' ] ) ) {
@@ -161,7 +166,7 @@
     
                             return;
                         }
-                
+    
                         // get bookings from $_POST[ 'event_post_id' ]
                         global $wpdb;
                         $event_bookings = $wpdb->get_results(
@@ -170,43 +175,16 @@
                             FROM {$wpdb->prefix}em_bookings
                             WHERE event_id = {$_POST['event_id']}
                         ");
-                
+    
                         $email_these_users = [];
                         if ( count( $event_bookings ) > 0 ) {
                             foreach( $event_bookings as $booking ) {
                                 $email_these_users[] = intval( $booking->person_id );
                             }
                         }
-                
-                        $from_email     = get_bloginfo( 'admin_email' );
-                        $site_name      = get_bloginfo( 'name' );
-                        $home_url       = get_option( 'home' );
-                        $headers[]      = "From: {$site_name} <{$from_email}>";
-                        $headers[]      = "Content-Type: text/html; charset=UTF-8";
-                        $email_template = get_option( 'eme_email_template' );
-                        $email_styling  = get_option( 'eme_email_styling' );
-                        $email_subject  = get_option( 'eme_email_subject_general' );
-                        $email_message  = get_option( 'eme_email_content_general' );
-                        $email_content  = str_replace( '%email_message%', $email_message, $email_template );
-                
-                        if ( false != $email_subject || false != $email_styling || false != $email_message || false != $email_template ) {
-                            foreach( $email_these_users as $user ) {
-                                $user_data        = get_userdata( $user );
-                                $to               = $user_data->user_email;
-                                $replacement_vars = array(
-                                    '%email_styling%' => $email_styling,
-                                    '%display_name%'  => $user_data->display_name,
-                                    '%first_name%'    => $user_data->first_name,
-                                    '%last_name%'     => $user_data->last_name,
-                                    '%home_url%'      => $home_url,
-                                    '%site_name%'     => $site_name,
-                                );
-                                $message          = strtr( $email_content, $replacement_vars );
-                                $email_subject    = strtr( $email_subject, $replacement_vars );
-                        
-                                wp_mail( $to, $email_subject, $message, $headers );
-                            }
-                        }
+    
+                        include( 'send-email.php' );
+
                     }
                 }
             }
@@ -220,11 +198,29 @@
                         eme_errors()->add( 'error_nonce_no_match', esc_html( __( 'Something went wrong. Please try again.', 'em-emails' ) ) );
                         return;
                     } else {
-                        
-                        update_option( 'eme_emails_subject_general', esc_html( $_POST['eme_email_subject_general'] ) );
-                        update_option( 'eme_emails_content_general', stripslashes( $_POST['eme_email_content_general'] ) );
     
-                        eme_errors()->add( 'success_settings_saved', esc_html( __( 'Settings saved successfully.', 'em-emails' ) ) );
+                        if ( ! empty( $_POST[ 'eme_emails_test_user' ] ) ) {
+                            
+                            // send test email
+                            $this->eme_send_email_function( $_POST );
+
+                        } else {
+    
+                            if ( ! empty( $_POST['eme_emails_subject_general'] ) ) {
+                                update_option( 'eme_emails_subject_general', esc_html( $_POST['eme_emails_subject_general'] ) );
+                            } else {
+                                delete_option( 'eme_emails_subject_general' );
+                            }
+                            
+                            if ( ! empty( $_POST['eme_emails_content_general'] ) ) {
+                                update_option( 'eme_emails_content_general', stripslashes( $_POST[ 'eme_emails_content_general' ] ) );
+                            } else {
+                                delete_option( 'eme_emails_content_general' );
+                            }
+    
+                            eme_errors()->add( 'success_settings_saved', esc_html( __( 'Settings saved successfully.', 'em-emails' ) ) );
+
+                        }
     
                         return;
                     }
@@ -243,9 +239,23 @@
                         return;
                     } else {
     
-                        update_option( 'eme_emails_logo', esc_url( $_POST['eme_email_logo'] ) );
-                        update_option( 'eme_emails_styling', $_POST['eme_email_styling'] );
-                        update_option( 'eme_emails_template', stripslashes( $_POST['eme_email_template'] ) );
+                        if ( ! empty( $_POST['eme_emails_logo'] ) ) {
+                            update_option( 'eme_emails_logo', esc_url( $_POST['eme_emails_logo'] ) );
+                        } else {
+                            delete_option( 'eme_emails_logo' );
+                        }
+        
+                        if ( ! empty( $_POST['eme_emails_styling'] ) ) {
+                            update_option( 'eme_emails_styling', $_POST['eme_emails_styling'] );
+                        } else {
+                            delete_option( 'eme_emails_styling' );
+                        }
+        
+                        if ( ! empty( $_POST['eme_emails_template'] ) ) {
+                            update_option( 'eme_emails_template', stripslashes( $_POST['eme_emails_template'] ) );
+                        } else {
+                            delete_option( 'eme_emails_template' );
+                        }
     
                         eme_errors()->add( 'success_settings_saved', esc_html( __( 'Settings saved successfully.', 'em-emails' ) ) );
                         
@@ -266,8 +276,6 @@
                         
                         return;
                     } else {
-                        
-                        // echo '<pre>'; var_dump($_POST); echo '</pre>'; exit;
                         
                         if ( isset( $_POST[ 'eme_email_reset' ]) ) {
                             $options = array(
