@@ -2,6 +2,9 @@
 
 Welcome to the Email Addon for [Events Manager](http://wp-events-plugin.com/). 
 
+## Version 
+0.1 beta
+
 ## Description 
 
 This plugin gives you the option to send an email to every person who registered for an event, through Events Manager.
