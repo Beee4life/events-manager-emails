@@ -21,7 +21,7 @@ Uploading the extracted zip by FTP
 
 ## Usage
 
-When activated the plugin installs a :
+When activated the plugin sets a :
 
 * default template
 * default styling
