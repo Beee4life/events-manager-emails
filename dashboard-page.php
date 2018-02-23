@@ -34,7 +34,8 @@
         <form name="send-em-emails" action="" method="post">
         <input name="send_em_emails_nonce" type="hidden" value="<?php echo wp_create_nonce( 'send-em-emails-nonce' ); ?>" />
 
-        <p>Events are sorted descending by (post) ID.<br />
+        <p>
+            <b>Events are sorted descending by (post) ID.</b><br />
             <label for="event_name" class="screen-reader-text">Select an event</label>
             <select id="event_name" name="event_id">
                 <option value=""><?php _e( 'Select an event', 'em-emails' ); ?></option>
@@ -46,6 +47,7 @@
         
         <?php $email_types = array( 'general_info' => 'General info' ); ?>
         <p>
+            <b>Email types</b><br />
             <label for="email_type" class="screen-reader-text"><?php _e( 'Select which email to send', 'em-emails' ); ?></label>
             <select id="email_type" name="email_type">
                 <option value=""><?php _e( 'Select which email to send', 'em-emails' ); ?></option>
