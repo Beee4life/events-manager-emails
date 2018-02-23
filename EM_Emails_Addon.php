@@ -1,7 +1,7 @@
 <?php
     /*
     Plugin Name: Events Manager Emails
-    Version: 0.1
+    Version: 0.2
     Plugin URI:
     Description: This plugin creates an extendable email 'part' to Events Manager.
     Author: Beee
@@ -35,7 +35,7 @@
                 // vars
                 $this->settings = array(
                     'path'    => trailingslashit( dirname( __FILE__ ) ),
-                    'version' => '0.1',
+                    'version' => '0.2',
                 );
     
                 // (de)activation hooks
