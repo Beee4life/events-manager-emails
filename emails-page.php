@@ -26,12 +26,18 @@
     
                 <?php $subject_value = get_option( 'eme_emails_subject_general' ); ?>
                 <p><label for="eme_emails_subject_general">Email subject</label></p>
+                <?php do_action( 'eme_after_email_subject_label' ); ?>
                 <p><input type="text" name="eme_emails_subject_general" size="100" value="<?php echo $subject_value; ?>" placeholder="<?php  _e( 'Enter an email subject here (if not entered, email will not be sent)', 'em-emails' ); ?>" /></p>
             
                 <?php $content_value = get_option( 'eme_emails_content_general' ); ?>
                 <p><label for="eme_emails_content_general">Email content</label></p>
+                <?php do_action( 'eme_after_email_content_label' ); ?>
                 <p><textarea name="eme_emails_content_general" rows="8" cols="100" placeholder="<?php  _e( 'Enter the email content here (if not entered, email will not be sent)', 'em-emails' ); ?>"><?php echo $content_value; ?></textarea></p>
-        
+
+                <p><label for="eme_emails_test_user">Send test email to</label></p>
+                <?php do_action( 'eme_after_test_label' ); ?>
+                <p><input type="text" name="eme_emails_test_user" size="100" value="" placeholder="<?php  _e( 'Enter your user ID. Email will be sent to your registered address.', 'em-emails' ); ?>" /></p>
+
                 <p><?php submit_button( __( 'Save email settings', 'em-emails' ), 'primary' ); ?></p>
             
             </form>
