@@ -1,7 +1,7 @@
 <?php
     /*
     Plugin Name: Events Manager Emails
-    Version: 0.1 beta
+    Version: 0.1
     Plugin URI:
     Description: This plugin creates an extendable email 'part' to Events Manager.
     Author: Beee

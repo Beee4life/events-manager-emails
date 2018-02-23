@@ -3,7 +3,7 @@
 Welcome to the Email Addon for [Events Manager](http://wp-events-plugin.com/). 
 
 ## Version 
-0.1 beta
+0.1
 
 ## Description 
 

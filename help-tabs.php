@@ -63,7 +63,7 @@
                 'content' => '<h5>Send an email</h5><p>' . esc_html__( 'If any of the fields (template, styling, subject or content) is left blank, no email will be sent.', 'em-emails' ) . '</p>'
             ) );
     
-            $donate_link = '<form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="donation">
+            $donate_form = '<form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="donation">
                     <div>
                         <input type="hidden" name="cmd" value="_xclick">
                         <input type="hidden" name="business" value="info@berryplasman.com">
@@ -91,7 +91,7 @@
                 'id'      => 'eme-donate',
                 'title'   => esc_html__( 'Donate', 'em-emails' ),
                 'content' => '<h5>Donate</h5><p>' . esc_html__( 'If you like this plugin, please send a donation to the "Help Beee develop this plugin further" fund.', 'em-emails' ) . '</p>' .
-                    '<p>' . $donate_link . '</p>'
+                    '<p>' . $donate_form . '</p>'
             ) );
     
         }
