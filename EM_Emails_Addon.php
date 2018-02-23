@@ -146,12 +146,14 @@
                         // echo '<pre>'; var_dump( $_POST ); echo '</pre>'; exit;
                 
                         if ( empty( $_POST[ 'event_id' ] ) ) {
-                            // throw error
-                            // return;
+                            eme_errors()->add( 'error_no_event', esc_html( __( 'No event selected.', 'em-emails' ) ) );
+                            
+                            return;
                         }
                         if ( empty( $_POST[ 'email_type' ] ) ) {
-                            // throw error
-                            // return;
+                            eme_errors()->add( 'error_no_type', esc_html( __( 'No email type selected.', 'em-emails' ) ) );
+    
+                            return;
                         }
                 
                         // get bookings from $_POST[ 'event_post_id' ]
@@ -170,22 +172,16 @@
                             }
                         }
                 
-                        echo '<pre>'; var_dump($email_these_users); echo '</pre>'; exit;
-                
                         $from_email     = get_bloginfo( 'admin_email' );
                         $site_name      = get_bloginfo( 'name' );
                         $home_url       = get_option( 'home' );
                         $headers[]      = "From: {$site_name} <{$from_email}>";
                         $headers[]      = "Content-Type: text/html; charset=UTF-8";
                         $email_template = get_option( 'eme_email_template' );
-                        // @TODO: if not contains email_message, throw error
                         $email_styling  = get_option( 'eme_email_styling' );
-                        // @TODO: if styling is empty, throw error
                         $email_subject  = get_option( 'eme_email_subject_general' );
                         $email_message  = get_option( 'eme_email_content_general' );
                         $email_content  = str_replace( '%email_message%', $email_message, $email_template );
-                
-                        // echo '<pre>'; var_dump($email_template); echo '</pre>'; exit;
                 
                         if ( false != $email_subject || false != $email_styling || false != $email_message || false != $email_template ) {
                             foreach( $email_these_users as $user ) {
