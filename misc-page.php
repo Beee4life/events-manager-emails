@@ -44,7 +44,7 @@
         </form>
 
         <h3>Support</h3>
-        <p>if you need support, turn to my <a href="https://github.com/Beee4life">Github page</a>.</p>
+        <p>if you need support, turn to my <a href="https://github.com/Beee4life/events-manager-emails/issues">Github page</a>.</p>
 
         <h3>About the author</h3>
         <p>I'm a Wordpress developer, specializing in rebuilds and custom plugin development. If you're interested to hire me, contact me through my <a href="http://www.berryplasman.com">website</a>.</p>
