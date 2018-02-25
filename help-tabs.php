@@ -19,15 +19,6 @@
             return false;
         }
         
-        if ( 'event_page_em-emails' == $screen_id ) {
-            $screen->add_help_tab( array(
-                'id'      => 'eme-dashboard',
-                'title'   => esc_html__( 'Dashboard', 'em-emails' ),
-                'content' => '<h5>Dashboard</h5><p>' . esc_html__( 'This page will show all your logged entries.', 'em-emails' ) . '</p>' .
-                    '<p>' . esc_html__( 'You can select individual logs by checking the checkbox and click "Delete selected items".', 'em-emails' ) . '</p>'
-            ) );
-        }
-    
         if ( in_array( $screen_id, ['event_page_em-emails','settings_page_em-emails-emails','settings_page_em-emails-template','settings_page_em-emails-misc'] ) ) {
             $tab_variables = '<p>' . __( 'All variables can be used in the email subject, email content and template, but be careful which you use in the subject.', 'em-emails' ) . '</p>';
             $tab_variables .= '<ul>';
@@ -38,6 +29,7 @@
             $tab_variables .= '<li>%display_name% : ' . __( 'replaced by the display name of the user', 'em-emails' ) . '</li>';
             $tab_variables .= '<li>%first_name% : ' . __( 'replaced by the user\'s first name', 'em-emails' ) . '</li>';
             $tab_variables .= '<li>%last_name% : ' . __( 'replaced by the user\'s last name', 'em-emails' ) . '</li>';
+            $tab_variables .= '<li>%%event_name%% : ' . __( 'replaced by the event name', 'em-emails' ) . '</li>';
             $tab_variables .= '<li>%email_message% : ' . __( 'replaced by the message you want to send', 'em-emails' ) . '</li>';
             $tab_variables .= '</ul>';
     
@@ -45,7 +37,7 @@
                 'id'      => 'eme-dashboard',
                 'title'   => esc_html__( 'Dashboard', 'em-emails' ),
                 'content' => '<h5>Dashboard</h5><p>' . esc_html__( 'From this page you can select which event you want to send an email to.', 'em-emails' ) . '</p>' .
-                    '<p>' . esc_html__( 'The dropdown features all events which have bookings enabled, regardless whether it\'s open or not. Now you can also send an email after the event has past (and bookings are closed).', 'em-emails' ) . '</p>' .
+                    '<p>' . esc_html__( 'The dropdown features all events which have bookings enabled, regardless whether it\'s open or not. This way you can also send an email after the event has past (and bookings are closed).', 'em-emails' ) . '</p>' .
                     '<p>' . esc_html__( 'Right now there\'s only 1 template to choose from. Maybe more will come...', 'em-emails' ) . '</p>'
             ) );
 

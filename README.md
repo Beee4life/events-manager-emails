@@ -47,6 +47,7 @@ There are a couple of actions available, meant to ouput an optional extra text/d
 
 * eme_after_event_label
 * eme_after_email_type_label
+* eme_after_booking_status_label
 * eme_after_email_subject_label
 * eme_after_email_content_label
 * eme_after_test_label

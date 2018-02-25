@@ -1,5 +1,6 @@
 <?php
 
+    $event_object   = new EM_Event( $_POST['event_id'] );
     $from_email     = get_bloginfo( 'admin_email' );
     $site_name      = get_bloginfo( 'name' );
     $home_url       = get_option( 'home' );
@@ -11,6 +12,8 @@
     $email_logo     = get_option( 'eme_emails_logo' );
     $email_message  = get_option( 'eme_emails_content_general' );
     $email_content  = str_replace( '%email_message%', $email_message, $email_template );
+    $send_to        = $_POST[ 'booking_status' ];
+    
     
     if ( false == $email_subject ) {
         eme_errors()->add( 'error_no_email_subject', esc_html( __( 'No email subject has been entered. You need to enter one before you can send it.', 'em-emails' ) ) );
@@ -46,6 +49,7 @@
                 '%display_name%'  => $user_data->display_name,
                 '%first_name%'    => $user_data->first_name,
                 '%last_name%'     => $user_data->last_name,
+                '%event_name%'    => $event_object->event_name,
                 '%home_url%'      => $home_url,
                 '%site_name%'     => $site_name,
             );
