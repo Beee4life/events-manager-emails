@@ -13,29 +13,36 @@
 
             <h2>Events Manager Email Add-on</h2>
             
-            <?php eme_show_admin_notices(); ?>
-        
-            <?php echo EM_Emails_Addon::eme_admin_menu(); ?>
-            
-            <?php
-                // get events with bookings enabled
-                global $wpdb;
-                $rsvp_events = $wpdb->get_results(
-                "
-                        SELECT event_id, post_id, event_start_date
-                        FROM {$wpdb->prefix}em_events
-                        WHERE event_rsvp = 1
-                        ORDER BY event_start_date DESC
-                    ");
-            ?>
-            <p><?php _e( 'For more info see the "Help" menu (top right).', 'em-emails' ); ?></p>
-            
-            <form name="send-em-emails" action="" method="post">
-                <input name="send_em_emails_nonce" type="hidden" value="<?php echo wp_create_nonce( 'send-em-emails-nonce' ); ?>" />
+            <?php if ( ! class_exists( 'EM_Events' ) ) { ?>
+                <?php eme_errors()->add( 'error_no_em', esc_html( __( 'Events Manager is not installed.', 'em-emails' ) ) ); ?>
+                <?php eme_show_admin_notices(); ?>
+                <p><?php printf( __( 'Install it <a href="%s">here</a>.', 'sexdates' ), get_admin_url(null, 'plugins.php' ) ); ?></p>
+            <?php } else { ?>
+                <?php eme_show_admin_notices(); ?>
     
-                <?php if ( ! class_exists( 'EM_Events' ) ) { ?>
-                    <div class="notice notice-error"><div><?php _e( 'Events Manager is not installed', 'em-emails' ); ?> !!!</div></div>
-                <?php } else { ?>
+                <?php echo EM_Emails_Addon::eme_admin_menu(); ?>
+    
+                <?php
+                    // get events with bookings enabled
+                    global $wpdb;
+                    $rsvp_events = $wpdb->get_results(
+                        "
+                            SELECT event_id, post_id, event_start_date
+                            FROM {$wpdb->prefix}em_events
+                            WHERE event_rsvp = 1
+                            ORDER BY event_start_date DESC
+                        "
+                    );
+                ?>
+                <p>
+                    <?php printf( __( 'Welcome to the Events Manager Emails plugin, an extension for <a href="">Events Manager</a>.', 'em-emails' ), esc_url( 'http://wp-events-plugin.com/' ) ); ?>
+                    <br />
+                    <?php _e( 'For more info see the "Help" menu (top right).', 'em-emails' ); ?>
+                </p>
+
+                <form name="send-em-emails" action="" method="post">
+                    <input name="send_em_emails_nonce" type="hidden" value="<?php echo wp_create_nonce( 'send-em-emails-nonce' ); ?>" />
+
                     <p>
                         <b><?php _e( 'Events are sorted descending by (post) ID.', 'em-emails' ); ?></b><br />
                         <label for="event_name" class="screen-reader-text"><?php _e( 'Select an event', 'em-emails' ); ?></label>
@@ -59,12 +66,31 @@
                                 <option value="<?php echo $key; ?>"><?php echo  $value; ?></option>
                             <?php } ?>
                         </select>
-        
-                        <?php submit_button( __( 'Send email', 'em-emails' ), 'primary' ); ?>
                     </p>
-                <?php } ?>
-            </form>
 
+                    <?php
+                        $booking_status = array(
+                            'all'       => 'All',
+                            'confirmed' => 'Confirmed',
+                            'pending'   => 'Pending',
+                        );
+                    ?>
+                    <p>
+                        <b><?php _e( 'Booking status', 'em-emails' ); ?></b><br />
+                        <label for="booking_status" class="screen-reader-text"><?php _e( 'Select which booking status to send to', 'em-emails' ); ?></label>
+                        <?php do_action( 'eme_after_booking_status_label' ); ?>
+                        <select id="booking_status" name="booking_status">
+<!--                            <option value="">--><?php //_e( 'Select booking status', 'em-emails' ); ?><!--</option>-->
+                            <?php foreach ( $booking_status as $key => $value ) { ?>
+                                <option value="<?php echo $key; ?>"><?php echo  $value; ?></option>
+                            <?php } ?>
+                        </select>
+                    </p>
+
+                    <?php submit_button( __( 'Send email', 'em-emails' ), 'primary' ); ?>
+
+                </form>
+            <?php } ?>
         </div>
 <?php
     }
