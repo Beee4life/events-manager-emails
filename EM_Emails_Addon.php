@@ -97,7 +97,7 @@
              * @return string
              */
             public static function eme_admin_menu() {
-                return '<p><a href="' . site_url() . '/wp-admin/edit.php?post_type=event&page=em-emails">Dashboard</a> | <a href="'.site_url().'/wp-admin/options-general.php?page=em-emails-emails">Emails</a> | <a href="'.site_url().'/wp-admin/options-general.php?page=em-emails-template">Template</a> | <a href="'.site_url().'/wp-admin/options-general.php?page=em-emails-misc">Misc</a></p>';
+                return '<p><a href="' . site_url() . '/wp-admin/edit.php?post_type=event&page=em-emails">Dashboard</a> | <a href="' . site_url() . '/wp-admin/options-general.php?page=em-emails-emails">Emails</a> | <a href="' . site_url() . '/wp-admin/options-general.php?page=em-emails-template">Template</a> | <a href="' . site_url() . '/wp-admin/options-general.php?page=em-emails-misc">Misc</a></p>';
             }
 
             /**
@@ -106,8 +106,8 @@
             public function eme_admin_pages() {
                 add_submenu_page(
                     'edit.php?post_type=event',
-                    'Event emails',
-                    'Event emails',
+                    'Event Emails',
+                    'Event Emails',
                     'manage_options',
                     'em-emails',
                     'em_emails_dashboard_page'
@@ -145,6 +145,7 @@
     
                 if ( false != $post_data ) {
     
+                    // @TOOD: check this
                     $email_these_users = array( $post_data[ 'eme_emails_test_user' ] );
                     include( 'send-email.php' );
                 
@@ -155,7 +156,7 @@
 
                         return;
                     } else {
-                        
+    
                         if ( empty( $_POST[ 'event_id' ] ) ) {
                             eme_errors()->add( 'error_no_event', esc_html( __( 'No event selected.', 'em-emails' ) ) );
     
