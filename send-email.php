@@ -1,6 +1,6 @@
 <?php
-
-    $event_object   = new EM_Event( $_POST['event_id'] );
+    
+    $event_object = ( isset( $_POST[ 'eme_event_id' ] ) ) ? new EM_Event( $_POST[ 'eme_event_id' ] ) : false;
     $from_email     = get_bloginfo( 'admin_email' );
     $site_name      = get_bloginfo( 'name' );
     $home_url       = get_option( 'home' );
@@ -12,7 +12,7 @@
     $email_logo     = get_option( 'eme_emails_logo' );
     $email_message  = get_option( 'eme_emails_content_general' );
     $email_content  = str_replace( '%email_message%', $email_message, $email_template );
-    $send_to        = $_POST[ 'booking_status' ];
+    $send_to        = $_POST[ 'eme_booking_status' ];
     
     
     if ( false == $email_subject ) {
@@ -39,7 +39,7 @@
         return;
     }
     
-    if ( false != $email_subject || false != $email_styling || false != $email_message || false != $email_template ) {
+    if ( false != $event_object && ( false != $email_subject || false != $email_styling || false != $email_message || false != $email_template ) ) {
         foreach( $email_these_users as $user ) {
             $user_data        = get_userdata( $user );
             $to               = $user_data->user_email;

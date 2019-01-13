@@ -16,26 +16,6 @@
             <?php eme_show_admin_notices(); ?>
         
             <?php echo EM_Emails_Addon::eme_admin_menu(); ?>
-    
-            <?php
-                // get events with bookings enabled
-                global $wpdb;
-                $rsvp_events = $wpdb->get_results(
-                "
-                        SELECT post_id, event_start_date
-                        FROM {$wpdb->prefix}em_events
-                        WHERE event_rsvp = 1
-                        ORDER BY event_start_date DESC
-                    ");
-                
-                if ( count( $rsvp_events ) > 0 ) {
-                    $event_post_ids = array();
-                    foreach( $rsvp_events as $event ) {
-                        $event_post_ids[] = intval( $event->post_id );
-                        
-                    }
-                }
-            ?>
 
             <p><?php _e( 'For more info see the "Help" menu (top right).', 'em-emails' ); ?></p>
 

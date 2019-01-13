@@ -1,19 +1,20 @@
 <?php
-	/**
-	 * @return WP_Error
-	 */
-	function eme_errors() {
-		static $wp_error; // Will hold global variable safely
-		return isset( $wp_error ) ? $wp_error : ( $wp_error = new WP_Error( null, null, null ) );
-	}
-
-	/**
-	 * Displays error messages from form submissions
-	 */
-	function eme_show_admin_notices() {
+    /**
+     * @return WP_Error
+     */
+    function eme_errors() {
+        static $wp_error; // Will hold global variable safely
+        
+        return isset( $wp_error ) ? $wp_error : ( $wp_error = new WP_Error( null, null, null ) );
+    }
+    
+    /**
+     * Displays error messages from form submissions
+     */
+    function eme_show_admin_notices() {
         if ( $codes = eme_errors()->get_error_codes() ) {
             if ( is_wp_error( eme_errors() ) ) {
-    
+                
                 // Loop error codes and display errors
                 $error      = false;
                 $span_class = false;
@@ -34,8 +35,8 @@
                         $prefix     = esc_html( __( 'Error', 'em-emails' ) );
                     }
                 }
-                echo '<div class="notice al-notice ' . $span_class . 'is-dismissible">';
-                foreach( $codes as $code ) {
+                echo '<div class="notice eme-notice ' . $span_class . 'is-dismissible">';
+                foreach ( $codes as $code ) {
                     $message = eme_errors()->get_error_message( $code );
                     echo '<div class="">';
                     if ( true == $prefix ) {
