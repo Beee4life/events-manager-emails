@@ -9,11 +9,11 @@
     License: GPL v2
     Text-domain: em-emails
 
-            http://www.berryplasman.com
-               ___  ____ ____ ____
-              / _ )/ __/  __/  __/
-             / _  / _/   _/   _/
-            /____/___/____/____/
+    http://www.berryplasman.com
+       ___  ____ ____ ____
+      / _ )/ __/  __/  __/
+     / _  / _/   _/   _/
+    /____/___/____/____/
 
     */
 
@@ -199,7 +199,7 @@
                         eme_errors()->add( 'error_nonce_no_match', esc_html( __( 'Something went wrong. Please try again.', 'em-emails' ) ) );
                         return;
                     } else {
-    
+
                         if ( ! empty( $_POST[ 'eme_emails_test_user' ] ) ) {
                             
                             // send test email
